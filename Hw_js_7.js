@@ -132,5 +132,5 @@ function getNextDay(dateStr) {
   
   const date = prompt("Введите дату в формате 'день.месяц.год':");
   const nextDay = getNextDay(date);
-  alert(`Наступний день: ${nextDay}`);
+  alert(`Следующий день: ${nextDay}`);
   
