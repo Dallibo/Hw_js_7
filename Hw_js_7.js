@@ -105,5 +105,32 @@ function numb16(start, end, isEven) {
 numb16(numb14, numb15, isEven);
 
 
-
-
+  function isLeapYear(year) {
+    if (year % 4 !== 0) return false;
+    else if (year % 100 !== 0) return true;
+    else if (year % 400 !== 0) return false;
+    else return true;
+  }
+function getNextDay(dateStr) {
+    const parts = dateStr.split('.');
+    const day = parseInt(parts[0]);
+    const month = parseInt(parts[1]);
+    const year = parseInt(parts[2]);
+  
+    const daysInMonth = [31, isLeapYear(year) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  
+    if (day >= daysInMonth[month - 1]) {
+      if (month === 12) {
+        return `1.1.${year + 1}`;
+      } else {
+        return `1.${month + 1}.${year}`;
+      }
+    } else {
+      return `${day + 1}.${month}.${year}`;
+    }
+  }
+  
+  const date = prompt("Введите дату в формате 'день.месяц.год':");
+  const nextDay = getNextDay(date);
+  alert(`Наступний день: ${nextDay}`);
+  
