@@ -81,36 +81,29 @@ function mod(a3, b3) {
 let numb12 = mod(a3,b3)
 alert(`Ответ: ${numb12}`)
 
-
-function calculateSum(...numbers) {
-    let sum = 0;
-    for (let i = 0; i < numbers.length; i++) {
-      sum += numbers[i];
-    }
-    return sum;
+let numb13 = prompt("Вводите числа через запятую что бы получить их сумму: ").split(",");
+function sum() {
+  let sum = 0;
+  for (let i = 0; i < numb13.length; i++) {
+    sum += +numb13[i];
   }
-
-
-
-
-
-  function max(){
-    if(arguments.length==0)
-    return undefined;
-    if (arguments.length==1)
-    return arguments[0];
-    let max = arguments[0];
-    for(let i=1; i<arguments.length; i++)
-    if(arguments[i]>max)
-    max = arguments [i];
-    return max;
+  return sum;
 }
-console.log(`Max []:`);
-console.log(max());
-console.log(`Max [3]:`);
-console.log(max(3));
-console.log(`Max [3,7]:`);
-console.log(max(3, 7));
+let result4 = sum();
+alert(`Результат: ${result4}`);
+
+
+let numb14 = +prompt("Введите первое число: ");
+let numb15 = +prompt("Введите второе число: ");
+let isEven = confirm("Хотите вывести парные числа?");
+function numb16(start, end, isEven) {
+  let step = isEven ? 2 : 1;
+  for (let i = start; i <= end; i = i + step) {
+    console.log(i);
+  }
+}
+numb16(numb14, numb15, isEven);
+
 
 
 
