@@ -103,34 +103,47 @@ function numb16(start, end, isEven) {
   }
 }
 numb16(numb14, numb15, isEven);
+  
 
+var day = parseInt(prompt("Введите день:"));
+var month = parseInt(prompt("Введите месяц:"));
+var year = parseInt(prompt("Введите год:"));
+var isLeapYear = false;
+function isLeapYear(year) {
+  if (year % 4 !== 0) return false;
+  else if (year % 100 !== 0) return true;
+  else if (year % 400 !== 0) return false;
+  else return true;
+}
+function getDaysInMonth(month, isLeapYear) {
+  var daysInMonth = 31;
 
-  function isLeapYear(year) {
-    if (year % 4 !== 0) return false;
-    else if (year % 100 !== 0) return true;
-    else if (year % 400 !== 0) return false;
-    else return true;
+  if (month === 4 || month === 6 || month === 9 || month === 11) {
+    daysInMonth = 30;
   }
-function getNextDay(dateStr) {
-    const parts = dateStr.split('.');
-    const day = parseInt(parts[0]);
-    const month = parseInt(parts[1]);
-    const year = parseInt(parts[2]);
-  
-    const daysInMonth = [31, isLeapYear(year) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  
-    if (day >= daysInMonth[month - 1]) {
-      if (month === 12) {
-        return `1.1.${year + 1}`;
-      } else {
-        return `1.${month + 1}.${year}`;
-      }
+  else if (month === 2) {
+    daysInMonth = isLeapYear ? 29 : 28;
+  }
+
+  return daysInMonth;
+}
+var daysInCurrentMonth = getDaysInMonth(month, isLeapYear);
+if (day < 1 || day > daysInCurrentMonth || month < 1 || month > 12) {
+  alert("Введена некорекная дата!");
+} else {
+  if (day === daysInCurrentMonth) {
+    day = 1;
+    if (month === 12) {
+      month = 1;
+      year++;
     } else {
-      return `${day + 1}.${month}.${year}`;
+      month++;
     }
+  } else {
+    day++;
   }
-  
-  const date = prompt("Введите дату в формате 'день.месяц.год':");
-  const nextDay = getNextDay(date);
-  alert(`Следующий день: ${nextDay}`);
+  var nextDate = day + "." + month + "." + year;
+  alert("Следующая дата: " + nextDate);
+  document.write("Следующая дата: " + nextDate);
+}
   
